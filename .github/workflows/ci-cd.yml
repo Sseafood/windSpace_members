@@ -1,40 +1,36 @@
-name: CI/CD Pipeline
+name: widget test
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
+    types: [opened, synchronize]
+  push:
     branches:
       - main
 
 jobs:
-  build:
+  widget_test:
+    name: flutter widget test
     runs-on: ubuntu-latest
-
     steps:
-      - name: レポジトリをチェックアウト
-        uses: actions/checkout@v3
-
-      - name: Node.jsをセットアップ
-        uses: actions/setup-node@v3
+      - name: set up repository
+        uses: actions/checkout@v2
+        
+      - name: set up java
+        uses: actions/setup-java@v2  
         with:
-          node-version: '18'
-
-      - name: 依存関係をインストール
-        run: npm install
-
-      - name: テストを実行
-        run: npm test
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: レポジトリをチェックアウト
-        uses: actions/checkout@v3
-
-      - name: アプリをデプロイ
+          java-version: '12.x'
+          distribution: 'zulu'
+          
+      - name: Set up Flutter SDK
         run: |
-          echo "デプロイ処理をここに記述"
+            git clone https://github.com/flutter/flutter.git
+            cd flutter
+            git checkout stable
+            export PATH="$PATH:`pwd`/bin"
+            echo "export PATH=\$PATH:`pwd`/bin" >> $GITHUB_ENV
+
+      - name: flutter pub get
+        run: flutter pub get
+
+      - name: flutter widget test
+        run: flutter test test/widget_test.dart
