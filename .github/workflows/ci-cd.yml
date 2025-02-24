@@ -1,36 +1,58 @@
-name: widget test
+name: flutter ci/cd
 
 on:
-  pull_request:
-    types: [opened, synchronize]
   push:
+    branches:
+      - main
+  pull_request:
     branches:
       - main
 
 jobs:
-  widget_test:
-    name: flutter widget test
-    runs-on: ubuntu-latest
-    steps:
-      - name: set up repository
-        uses: actions/checkout@v2
-        
-      - name: set up java
-        uses: actions/setup-java@v2  
-        with:
-          java-version: '12.x'
-          distribution: 'zulu'
-          
-      - name: Set up Flutter SDK
-        run: |
-            git clone https://github.com/flutter/flutter.git
-            cd flutter
-            git checkout stable
-            export PATH="$PATH:`pwd`/bin"
-            echo "export PATH=\$PATH:`pwd`/bin" >> $GITHUB_ENV
+  build-android:
+    runs-on: ubuntu-latest // build-iosとは異なる点に注意
 
-      - name: flutter pub get
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 'stable'
+
+      - name: Install dependencies
         run: flutter pub get
 
-      - name: flutter widget test
-        run: flutter test test/widget_test.dart
+      - name: Analyze code
+        run: flutter analyze
+
+      - name: Run tests
+        run: flutter test
+
+      - name: Build Android
+        run: flutter build apk --release
+
+  build-ios:
+    runs-on: macos-latest  // build-androidとは異なる点に注意
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 'stable'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze code
+        run: flutter analyze
+
+      - name: Run tests
+        run: flutter test
+
+      - name: Build iOS
+        run: flutter build ios --no-codesign
