@@ -1,0 +1,24 @@
+{
+  "name": "wind_space_members",
+  "version": "1.0.0",
+  "description": "WINDSPACEの会員情報を管理するアプリです。",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sseafood/windSpace_members.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sseafood/windSpace_members/issues"
+  },
+  "homepage": "https://github.com/Sseafood/windSpace_members#readme"
+}
