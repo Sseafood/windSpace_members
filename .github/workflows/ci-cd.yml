@@ -16,16 +16,18 @@ jobs:
       - name: レポジトリをチェックアウト
         uses: actions/checkout@v3
 
-      - name: Flutter SDKをセットアップ
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.12.0'  # Flutterの安定版バージョンを明示的に指定
+      - name: Flutter SDKをインストール
+        run: |
+          git clone https://github.com/flutter/flutter.git
+          cd flutter
+          git checkout stable
+          export PATH="$PATH:`pwd`/bin"
 
-      - name: 依存関係をインストール
-        run: flutter pub get  # Flutterの依存関係をインストール
+      - name: Flutterの依存関係をインストール
+        run: flutter pub get
 
       - name: テストを実行
-        run: flutter test  # Flutterのテストを実行
+        run: flutter test
 
   deploy:
     needs: build
