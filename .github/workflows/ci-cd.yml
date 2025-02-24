@@ -16,19 +16,16 @@ jobs:
       - name: レポジトリをチェックアウト
         uses: actions/checkout@v3
 
-      - name: Node.jsをセットアップ
-        uses: actions/setup-node@v3
+      - name: Dart SDKをセットアップ
+        uses: dart-lang/setup-dart@v1
         with:
-          node-version: '18'
+          sdk: stable
 
       - name: 依存関係をインストール
-        run: npm install
-
-      - name: Grant execute permission to jest
-        run: chmod +x node_modules/.bin/jest
+        run: dart pub get  # Dartの依存関係をインストール
 
       - name: テストを実行
-        run: npm test
+        run: dart test  # Dartのテストを実行
 
   deploy:
     needs: build
