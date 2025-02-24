@@ -5,7 +5,7 @@
 
 version:
   revision: "c29b57067831cefb3e3364b0a998be7a32615ff3"
-  channel: "master"
+  channel: "stable"
 
 project_type: app
 
