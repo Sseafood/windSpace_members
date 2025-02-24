@@ -8,7 +8,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "jest"
+    "test": "node_modules/.bin/jes"
   },
   "repository": {
     "type": "git",
