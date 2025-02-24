@@ -12,11 +12,10 @@ class LoginCard extends StatelessWidget {
 
     void login() {
       if (formKey.currentState!.validate()) {
-        String email = emailController.text;
-        String password = passwordController.text;
+        // String email = emailController.text;
+        // String password = passwordController.text;
 
         // ここに認証処理を追加
-        print('Email: $email, Password: $password');
       }
     }
 
