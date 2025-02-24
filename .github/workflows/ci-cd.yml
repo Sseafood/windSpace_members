@@ -19,7 +19,7 @@ jobs:
       - name: Flutter SDKをセットアップ
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: 'stable'
+          flutter-version: '3.12.0'  # Flutterの安定版バージョンを明示的に指定
 
       - name: 依存関係をインストール
         run: flutter pub get  # Flutterの依存関係をインストール
