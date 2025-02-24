@@ -22,6 +22,7 @@ jobs:
           cd flutter
           git checkout stable
           export PATH="$PATH:`pwd`/bin"
+          flutter doctor
 
       - name: Flutterの依存関係をインストール
         run: flutter pub get
