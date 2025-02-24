@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  build-android:
+  flutter-test:
     runs-on: ubuntu-latest 
 
     steps:
@@ -20,8 +20,6 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.29.0'
-
-          
 
       - name: Install dependencies
         run: flutter pub get
