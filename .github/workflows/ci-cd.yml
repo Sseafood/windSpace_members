@@ -23,7 +23,10 @@ jobs:
           git checkout stable
           echo "export PATH=\$PATH:`pwd`/bin" >> $GITHUB_ENV
           source $GITHUB_ENV
-                    
+
+      - name: Flutterのパス確認
+        run: which flutter 
+
       - name: Flutterの依存関係をインストール
         run: flutter pub get
 
