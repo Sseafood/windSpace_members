@@ -14,7 +14,7 @@ class WeatherCard extends StatelessWidget {
             padding: EdgeInsets.symmetric(
                 vertical: CardSize().cardVerticalPaddingSize,
                 horizontal: CardSize().cardHorizontalPaddingSize),
-            child: Column(
+            child: const Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [Text('TODO : 天気情報の取得')],
             )));

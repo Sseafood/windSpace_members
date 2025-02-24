@@ -6,14 +6,14 @@ class LoginCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController _emailController = TextEditingController();
-    final TextEditingController _passwordController = TextEditingController();
-    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
+    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-    void _login() {
-      if (_formKey.currentState!.validate()) {
-        String email = _emailController.text;
-        String password = _passwordController.text;
+    void login() {
+      if (formKey.currentState!.validate()) {
+        String email = emailController.text;
+        String password = passwordController.text;
 
         // ここに認証処理を追加
         print('Email: $email, Password: $password');
@@ -32,7 +32,7 @@ class LoginCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextFormField(
-                  controller: _emailController,
+                  controller: emailController,
                   decoration: const InputDecoration(labelText: 'Email'),
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
@@ -44,7 +44,7 @@ class LoginCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 TextFormField(
-                  controller: _passwordController,
+                  controller: passwordController,
                   decoration: const InputDecoration(labelText: 'Password'),
                   obscureText: true,
                   validator: (value) {
@@ -56,7 +56,7 @@ class LoginCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 ElevatedButton(
-                  onPressed: _login,
+                  onPressed: login,
                   child: const Text('Login'),
                 ),
               ],

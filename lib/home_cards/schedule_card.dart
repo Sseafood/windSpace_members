@@ -6,8 +6,8 @@ class ScheduleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final getTodayEvent = 'TODO : 取得処理作成';
-    final getTomorrowEvent = 'TODO : 取得処理作成';
+    const getTodayEvent = 'TODO : 取得処理作成';
+    const getTomorrowEvent = 'TODO : 取得処理作成';
     return Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16.0),
@@ -16,7 +16,7 @@ class ScheduleCard extends StatelessWidget {
             padding: EdgeInsets.symmetric(
                 vertical: CardSize().cardVerticalPaddingSize,
                 horizontal: CardSize().cardHorizontalPaddingSize),
-            child: Column(
+            child: const Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text('本日のイベント：$getTodayEvent'),
