@@ -16,16 +16,16 @@ jobs:
       - name: レポジトリをチェックアウト
         uses: actions/checkout@v3
 
-      - name: Dart SDKをセットアップ
-        uses: dart-lang/setup-dart@v1
+      - name: Flutter SDKをセットアップ
+        uses: subosito/flutter-action@v2
         with:
-          sdk: stable
+          flutter-version: 'stable'
 
       - name: 依存関係をインストール
-        run: dart pub get  # Dartの依存関係をインストール
+        run: flutter pub get  # Flutterの依存関係をインストール
 
       - name: テストを実行
-        run: dart test  # Dartのテストを実行
+        run: flutter test  # Flutterのテストを実行
 
   deploy:
     needs: build
