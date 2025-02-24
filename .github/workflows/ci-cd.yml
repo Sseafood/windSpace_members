@@ -21,8 +21,7 @@ jobs:
           git clone https://github.com/flutter/flutter.git
           cd flutter
           git checkout stable
-          export PATH="$PATH:`pwd`/bin"
-          flutter doctor
+          echo "$PWD/flutter/bin" >> $GITHUB_ENV
 
       - name: Flutterの依存関係をインストール
         run: flutter pub get
