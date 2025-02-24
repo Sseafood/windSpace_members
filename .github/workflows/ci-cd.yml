@@ -19,6 +19,7 @@ jobs:
         uses: actions/setup-java@v2  
         with:
           java-version: '12.x'
+          distribution: 'adoptopenjdk'
           
       - name: set up Flutter SDK
         uses: subosito/flutter-action@v2 
