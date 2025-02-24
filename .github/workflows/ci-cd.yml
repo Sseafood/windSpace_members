@@ -10,7 +10,7 @@ on:
 
 jobs:
   build-android:
-    runs-on: ubuntu-latest // build-iosとは異なる点に注意
+    runs-on: ubuntu-latest 
 
     steps:
       - name: Checkout code
@@ -19,7 +19,9 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: 'stable'
+          flutter-version: '3.29.0'
+
+          
 
       - name: Install dependencies
         run: flutter pub get
@@ -30,29 +32,5 @@ jobs:
       - name: Run tests
         run: flutter test
 
-      - name: Build Android
+      - name: Build APK
         run: flutter build apk --release
-
-  build-ios:
-    runs-on: macos-latest  // build-androidとは異なる点に注意
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: 'stable'
-
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Analyze code
-        run: flutter analyze
-
-      - name: Run tests
-        run: flutter test
-
-      - name: Build iOS
-        run: flutter build ios --no-codesign
