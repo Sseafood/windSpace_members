@@ -24,6 +24,9 @@ jobs:
       - name: 依存関係をインストール
         run: npm install
 
+      - name: Grant execute permission to jest
+        run: chmod +x node_modules/.bin/jest
+
       - name: テストを実行
         run: npm test
 
