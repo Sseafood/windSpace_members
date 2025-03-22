@@ -34,5 +34,13 @@ jobs:
       - name: アプリのビルド (Android)
         run: flutter build apk --release
 
-      - name: アプリのビルド (iOS)
-        run: flutter build ios --release
+      - name: Install fastlane
+        run: |
+          gem install fastlane
+      - name: Setup Certificates
+        run: |
+          fastlane match development
+      - name: Build iOS App
+        run: |
+          flutter build ios --release
+      
