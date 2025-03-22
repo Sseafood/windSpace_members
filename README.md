@@ -1,6 +1,6 @@
 # windspace_members
 
-A new Flutter project.
+This app is manage infometion on windSpace
 
 ## Getting Started
 

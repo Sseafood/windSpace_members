@@ -1,0 +1,38 @@
+name: Flutter CI/CD
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build-test:
+    name: Build and Test Flutter App
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: Flutter をセットアップ
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.10.6'
+
+      - name: Flutter パッケージの取得
+        run: flutter pub get
+
+      - name: Flutter の静的解析
+        run: flutter analyze
+
+      - name: Flutter のテスト実行
+        run: flutter test
+
+      - name: アプリのビルド (Android)
+        run: flutter build apk --release
+
+      - name: アプリのビルド (iOS)
+        run: flutter build ios --no-codesign
