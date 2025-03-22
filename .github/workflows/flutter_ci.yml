@@ -39,6 +39,7 @@ jobs:
           gem install fastlane
       - name: Setup Certificates
         run: |
+          export FASTLANE_MATCH_GIT_URL="https://github.com/Sseafood/windSpace_members.git"
           fastlane match development
       - name: Build iOS App
         run: |
