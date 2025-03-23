@@ -34,12 +34,12 @@ jobs:
       - name: アプリのビルド (Android)
         run: flutter build apk --release
 
-      - name: Build iOS App
-      env:
-        FASTLANE_MATCH_GIT_URL: "https://github.com/Sseafood/windSpace_members.git"
-        GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
-        run: |
-          gem install fastlane
-          fastlane match development
-          flutter build ios --release
+      # - name: Build iOS App
+      #   env:
+      #     FASTLANE_MATCH_GIT_URL: "https://github.com/Sseafood/windSpace_members.git"
+      #     # GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+      #   run: |
+      #     gem install fastlane
+      #     fastlane match development
+      #     flutter build ios --release
       
