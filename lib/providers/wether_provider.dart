@@ -40,12 +40,11 @@ class Weather {
 Icon returnWeatherIcon(String weatherIconCode) {
   switch (weatherIconCode) {
     case '01d': // 晴れ（昼）
+    case '01n': // 晴れ（夜）
       return const Icon(
         Icons.wb_sunny,
         color: Color.fromARGB(255, 255, 157, 59),
       );
-    case '01n': // 晴れ（夜）
-      return const Icon(Icons.nights_stay, color: Colors.blueGrey);
     case '02d': // 少し曇り（昼）
     case '02n': // 少し曇り（夜）
       return const Icon(Icons.cloud, color: Colors.grey);
@@ -59,9 +58,8 @@ Icon returnWeatherIcon(String weatherIconCode) {
     case '09n':
       return const Icon(Icons.grain, color: Colors.blue);
     case '10d': // 雨（昼）
-      return const Icon(Icons.beach_access, color: Colors.blue);
     case '10n': // 雨（夜）
-      return const Icon(Icons.umbrella, color: Colors.blue);
+      return const Icon(Icons.beach_access, color: Colors.blue);
     case '11d': // 雷雨
     case '11n':
       return const Icon(Icons.flash_on, color: Colors.orange);
